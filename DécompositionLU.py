@@ -17,7 +17,7 @@ def factLu(A):
     L = np.identity(dim)
     U=deepcopy(A)
     
-    for k in range(0, dim):
+    for k in range(0, dim-1):
         for j in range(k+1, dim):
             alpha=U[j,k]/U[k,k]
             U[j,:]=U[j,:]-alpha*U[k,:] #application de la formule du pivot
@@ -71,7 +71,7 @@ def factLuPivot(A):
     for k in range(0,dim-1):
         #formule calcul de la ligne que l'n va intervertir pour le pivot
         k0=np.argmax(abs(U[k:dim,k]))
-        k0=k0+k #demander au prof pq ?
+        k0=k0+k #because the fonction argmax define the indice with the lentgh of the vector given. for exemple if k=2 and dim=4, the length of the vector is 3 and the first index is 0 the second one ....
         #intervertion des lignes
         Pk=np.eye(dim,dim)
         if(k0!=k):
